@@ -24,15 +24,16 @@ namespace DriveConstants {
 constexpr int kLeftMotorPort = 0;
 constexpr int kRightMotorPort = 1;
 
-constexpr int kLeftEncoderPort 0;
-constexpr int kRightEncoderPort 1;
+constexpr int kLeftEncoderPorts[] = {0, 1};
+constexpr int kRightEncoderPorts[] = {2, 3};
 constexpr bool kLeftEncoderReversed = false;
 constexpr bool kRightEncoderReversed = true;
 
-constexpr int kEncoderCPR = 1024;
+constexpr int kEncoderCPR = 512;
 constexpr double kWheelDiameterInches = 6;
 constexpr double kEncoderDistancePerPulse =
-	// Assumes the encoders are directly mounted on the wheel shafts
+	// TODO: Fix this
+	// Assumes the encoders are directly mounted on the wheel shafts (they aren't, we need to fix this)
 	(kWheelDiameterInches * std::numbers::pi) / static_cast<double>(kEncoderCPR);
 }  // namespace DriveConstants
 

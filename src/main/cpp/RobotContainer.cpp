@@ -8,6 +8,12 @@
 
 RobotContainer::RobotContainer() { ConfigureBindings(); }
 
-void RobotContainer::ConfigureBindings() {}
+void RobotContainer::ConfigureBindings() {
+	m_drive.SetDefaultCommand(
+
+		// The default command (i.e, what we do when not running anything else.)
+		frc2::cmd::Run([this] { m_drive.TankDrive(m_driverController.GetLeftY(), m_driverController.GetRightY()); },
+					   {&m_drive}));
+}
 
 frc2::CommandPtr RobotContainer::GetAutonomousCommand() { return frc2::cmd::Print("No autonomous command configured"); }
