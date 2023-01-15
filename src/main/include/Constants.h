@@ -4,12 +4,12 @@
 
 #pragma once
 
-#include <numbers>
-
 #include <units/angle.h>
 #include <units/angular_velocity.h>
 #include <units/time.h>
 #include <units/voltage.h>
+
+#include <numbers>
 
 /**
  * The Constants header provides a convenient place for teams to hold robot-wide
@@ -32,16 +32,16 @@ constexpr bool kRightEncoderReversed = true;
 constexpr int kEncoderCPR = 1024;
 constexpr double kWheelDiameterInches = 6;
 constexpr double kEncoderDistancePerPulse =
-    // Assumes the encoders are directly mounted on the wheel shafts
-    (kWheelDiameterInches * std::numbers::pi) / static_cast<double>(kEncoderCPR);
-} // namespace DriveConstants
+	// Assumes the encoders are directly mounted on the wheel shafts
+	(kWheelDiameterInches * std::numbers::pi) / static_cast<double>(kEncoderCPR);
+}  // namespace DriveConstants
 
 namespace AutoConstants {
 constexpr auto kAutoTimeoutSeconds = 12_s;
 constexpr auto kAutoShootTimeSeconds = 7_s;
-} // namespace AutoConstants
+}  // namespace AutoConstants
 
 /// @brief These are constants for handling driver input.
 namespace OIConstants {
 constexpr int kDriverControllerPort = 0;
-} // namespace OIConstants
+}  // namespace OIConstants
