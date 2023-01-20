@@ -21,8 +21,8 @@
  */
 
 namespace DriveConstants {
-constexpr int kLeftMotorPort = 0;
-constexpr int kRightMotorPort = 1;
+constexpr int kLeftMotorPorts[] = {0, 1};
+constexpr int kRightMotorPorts[] = {2, 3};
 
 constexpr int kLeftEncoderPorts[] = {0, 1};
 constexpr int kRightEncoderPorts[] = {2, 3};
