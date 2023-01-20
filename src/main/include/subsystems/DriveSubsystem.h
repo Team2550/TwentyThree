@@ -3,9 +3,7 @@
 #include <frc/Encoder.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/motorcontrol/Spark.h>
-#include <frc/motorcontrol/MotorControllerGroup.h>
 #include <frc2/command/SubsystemBase.h>
-#include <frc/ADIS16470_IMU.h>
 
 #include "Constants.h"
 
@@ -45,22 +43,13 @@ class DriveSubsystem : public frc2::SubsystemBase {
 
    private:
 	// Motor Controllers
-	frc::Spark m_frontLeft;
-	frc::Spark m_rearLeft;
-	frc::MotorControllerGroup m_left{m_frontLeft, m_rearLeft};
-
-	frc::Spark m_frontRight;
-	frc::Spark m_rearRight;
-	frc::MotorControllerGroup m_right{m_frontRight, m_rearRight};
+	frc::Spark m_left;
+	frc::Spark m_right;
 
 	// Encoders
 	frc::Encoder m_leftEncoder;
 	frc::Encoder m_rightEncoder;
 
-	// Gyro
-	 frc::ADIS16470_IMU imu{};
-
 	// Drive Controller
 	frc::DifferentialDrive m_drive{m_left, m_right};
-
 };
