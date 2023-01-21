@@ -37,6 +37,17 @@ class DriveSubsystem : public frc2::SubsystemBase {
 	frc::Encoder& GetRightEncoder();
 
 	/**
+	 * @brief Gets the current yaw of the IMU.
+	 * 
+	 * @param imuAxis The axis to return the Angle for.
+	 * 
+	 * 0 returns X axis;
+	 * 1 returns Y axis;
+	 * 2 returns Z axis.
+	*/
+	units::angle::degree_t GetCurrentAngle(frc::ADIS16470_IMU::IMUAxis imuAxis);
+
+	/**
 	 * Sets the output scalar.
 	 *
 	 * @param scale The value to scale the output by (0-1).
@@ -58,7 +69,7 @@ class DriveSubsystem : public frc2::SubsystemBase {
 	frc::Encoder m_rightEncoder;
 
 	// Gyro
-	 frc::ADIS16470_IMU imu{};
+	frc::ADIS16470_IMU m_imu;
 
 	// Drive Controller
 	frc::DifferentialDrive m_drive{m_left, m_right};
