@@ -38,7 +38,7 @@ class DriveSubsystem : public frc2::SubsystemBase {
 
 	/// @brief Sets the yaw axis of the IMU.
 	/// @param imuAxis The axis to use for the yaw.
-	void setAngle(frc::ADIS16470_IMU::IMUAxis imuAxis);
+	void SetYawAxis(frc::ADIS16470_IMU::IMUAxis imuAxis);
 
 	/**
 	 * @brief Gets the current yaw of the IMU.
