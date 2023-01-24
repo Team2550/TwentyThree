@@ -4,7 +4,6 @@
 
 #pragma once
 
-#include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandPtr.h>
 #include <frc2/command/Commands.h>
 #include <frc2/command/button/CommandXboxController.h>

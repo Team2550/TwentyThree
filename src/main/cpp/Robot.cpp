@@ -6,13 +6,9 @@
 
 #include <frc2/command/CommandScheduler.h>
 
-void Robot::RobotInit() { m_chooser.SetDefaultOption("Axis", kX); }
+void Robot::RobotInit() {}
 
-void Robot::RobotPeriodic() {
-	frc2::CommandScheduler::GetInstance().Run();
-	units::angle::degree_t degrees = m_drive.GetCurrentAngle(frc::ADIS16470_IMU::IMUAxis::kY);
-	frc::SmartDashboard::PutNumber("Y axis degrees", degrees.value());
-}
+void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
 
 void Robot::DisabledInit() {}
 

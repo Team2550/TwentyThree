@@ -13,6 +13,9 @@ DriveSubsystem::DriveSubsystem()
 	// Set the distance per pulse for the encoders
 	m_leftEncoder.SetDistancePerPulse(kEncoderDistancePerPulse);
 	m_rightEncoder.SetDistancePerPulse(kEncoderDistancePerPulse);
+
+	// Set the default yaw axis of the accelerometer to Y
+	this->SetYawAxis(frc::ADIS16470_IMU::IMUAxis::kY);
 }
 
 void DriveSubsystem::ArcadeDrive(double leftSpeed, double rightSpeed) { m_drive.ArcadeDrive(-leftSpeed, rightSpeed); }
@@ -31,3 +34,13 @@ void DriveSubsystem::SetYawAxis(frc::ADIS16470_IMU::IMUAxis imuAxis) { m_imu.Set
 units::angle::degree_t DriveSubsystem::GetCurrentAngle() { return m_imu.GetAngle(); }
 
 void DriveSubsystem::SetOutputScale(double scale) { m_drive.SetMaxOutput(scale); }
+
+frc2::CommandPtr DriveSubsystem::OutputToSmartDashboard() {
+	return this->Run([this] {
+		// Get data for SmartDashboard
+		units::angle::degree_t degrees = this->GetCurrentAngle();
+
+		// Publish the SmartDashboard data
+		frc::SmartDashboard::PutNumber("Y axis degrees", degrees.value());
+	});
+}

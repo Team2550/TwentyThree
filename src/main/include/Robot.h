@@ -12,7 +12,6 @@
 #include <optional>
 
 #include "RobotContainer.h"
-#include "subsystems/DriveSubsystem.h"
 
 class Robot : public frc::TimedRobot {
    public:
@@ -35,12 +34,4 @@ class Robot : public frc::TimedRobot {
 	std::optional<frc2::CommandPtr> m_autonomousCommand;
 
 	RobotContainer m_container;
-
-	DriveSubsystem m_drive;
-
-	frc::SendableChooser<std::string> m_chooser;
-	const std::string kX = "X Axis";
-	const std::string kY = "Y Axis";
-	const std::string kZ = "Z Axis";
-	std::string m_axisSelected;
 };

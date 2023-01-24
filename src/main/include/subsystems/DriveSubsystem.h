@@ -5,6 +5,8 @@
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/motorcontrol/MotorControllerGroup.h>
 #include <frc/motorcontrol/Spark.h>
+#include <frc/smartdashboard/SmartDashboard.h>
+#include <frc2/command/CommandPtr.h>
 #include <frc2/command/SubsystemBase.h>
 
 #include "Constants.h"
@@ -51,6 +53,9 @@ class DriveSubsystem : public frc2::SubsystemBase {
 	 * @param scale The value to scale the output by (0-1).
 	 */
 	void SetOutputScale(double scale);
+
+	/// @brief Outputs the DriveSubsystem's SmartDashboard data to SmartDashboard
+	frc2::CommandPtr OutputToSmartDashboard();
 
    private:
 	// Motor Controllers
