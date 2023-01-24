@@ -15,7 +15,7 @@ DriveSubsystem::DriveSubsystem()
 	m_rightEncoder.SetDistancePerPulse(kEncoderDistancePerPulse);
 }
 
-void DriveSubsystem::TankDrive(double leftSpeed, double rightSpeed) { m_drive.TankDrive(-leftSpeed, rightSpeed); }
+void DriveSubsystem::ArcadeDrive(double leftSpeed, double rightSpeed) { m_drive.ArcadeDrive(-leftSpeed, rightSpeed); }
 
 void DriveSubsystem::ResetEncoders() {
 	m_leftEncoder.Reset();

@@ -4,12 +4,16 @@
 
 #include "RobotContainer.h"
 
+#include <frc2/command/Commands.h>
+
 RobotContainer::RobotContainer() { ConfigureBindings(); }
 
 void RobotContainer::ConfigureBindings() {
-	// The default command (i.e, what we do when not running anything else.)
-	m_drive.SetDefaultCommand(frc2::cmd::Run(
-		[this] { m_drive.TankDrive(m_driverController.GetLeftY(), m_driverController.GetRightY()); }, {&m_drive}));
+	m_drive.SetDefaultCommand(
+
+		// The default command (i.e, what we do when not running anything else.)
+		frc2::cmd::Run([this] { m_drive.ArcadeDrive(m_driverController.GetRightX(), m_driverController.GetLeftY()); },
+					   {&m_drive}));
 }
 
 frc2::CommandPtr RobotContainer::GetAutonomousCommand() { return frc2::cmd::Print("No autonomous command configured"); }

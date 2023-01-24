@@ -19,7 +19,7 @@ class DriveSubsystem : public frc2::SubsystemBase {
 	 * @param leftSpeed The speed for the left wheels.
 	 * @param rightSpeed The speed for the right wheels.
 	 */
-	void TankDrive(double leftSpeed, double rightSpeed);
+	void ArcadeDrive(double leftSpeed, double rightSpeed);
 
 	/**
 	 * @brief Resets the drive encoders to read zero.
