@@ -26,9 +26,8 @@ frc::Encoder& DriveSubsystem::GetLeftEncoder() { return m_leftEncoder; }
 
 frc::Encoder& DriveSubsystem::GetRightEncoder() { return m_rightEncoder; }
 
-units::angle::degree_t DriveSubsystem::GetCurrentAngle(frc::ADIS16470_IMU::IMUAxis imuAxis) {
-	m_imu.SetYawAxis(imuAxis);
-	return m_imu.GetAngle();
-}
+void DriveSubsystem::SetYawAxis(frc::ADIS16470_IMU::IMUAxis imuAxis) { m_imu.SetYawAxis(imuAxis); }
+
+units::angle::degree_t DriveSubsystem::GetCurrentAngle() { return m_imu.GetAngle(); }
 
 void DriveSubsystem::SetOutputScale(double scale) { m_drive.SetMaxOutput(scale); }
