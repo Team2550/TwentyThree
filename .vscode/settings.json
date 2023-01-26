@@ -18,4 +18,5 @@
   "files.associations": {
     "*.inc": "cpp"
   },
+  "wpilib.autoStartRioLog": true,
 }
