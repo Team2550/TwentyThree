@@ -18,7 +18,7 @@ DriveSubsystem::DriveSubsystem()
 	this->SetYawAxis(frc::ADIS16470_IMU::IMUAxis::kY);
 }
 
-void DriveSubsystem::ArcadeDrive(double leftSpeed, double rightSpeed) { m_drive.ArcadeDrive(-leftSpeed, rightSpeed); }
+void DriveSubsystem::ArcadeDrive(double speed, double rotation) { m_drive.ArcadeDrive(-speed, rotation); }
 
 void DriveSubsystem::ResetEncoders() {
 	m_leftEncoder.Reset();
