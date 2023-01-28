@@ -4,16 +4,25 @@
 
 #include "RobotContainer.h"
 
+#include <frc2/command/Commands.h>
+#include <frc2/command/FunctionalCommand.h>
+
+#include "commands/BalanceAuto.h"
+
 RobotContainer::RobotContainer() { ConfigureBindings(); }
 
 void RobotContainer::ConfigureBindings() {
 	m_drive.SetDefaultCommand(
-
 		// The default command (i.e, what we do when not running anything else.)
-		frc2::cmd::Run([this] { m_drive.ArcadeDrive(m_driverController.GetRightX(), m_driverController.GetLeftY()); },
+		// Make sure to compensate for the controllers' inverted Y axes on the stick
+		frc2::cmd::Run([this] { m_drive.ArcadeDrive(-m_driverController.GetLeftY(), m_driverController.GetRightX()); },
 					   {&m_drive}));
 
 	frc2::CommandPtr driveDashboard = m_drive.OutputToSmartDashboard().Repeatedly();
 }
 
-frc2::CommandPtr RobotContainer::GetAutonomousCommand() { return frc2::cmd::Print("No autonomous command configured"); }
+frc2::CommandPtr RobotContainer::GetAutonomousCommand() {
+	BalanceAuto balanceAuto = BalanceAuto(0.3_s, 0.5, &m_drive);
+
+	return frc2::CommandPtr(balanceAuto).AsProxy().AndThen(frc2::cmd::Print("ahoy-hoy"));
+};
