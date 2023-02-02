@@ -29,6 +29,10 @@ frc::Encoder& DriveSubsystem::GetLeftEncoder() { return m_leftEncoder; }
 
 frc::Encoder& DriveSubsystem::GetRightEncoder() { return m_rightEncoder; }
 
+double DriveSubsystem::GetAverageEncoderDistance() {
+	return (m_leftEncoder.GetDistance() + m_rightEncoder.GetDistance()) / 2.0;
+}
+
 void DriveSubsystem::SetYawAxis(frc::ADIS16470_IMU::IMUAxis imuAxis) { m_imu.SetYawAxis(imuAxis); }
 
 units::angle::degree_t DriveSubsystem::GetCurrentAngle() { return m_imu.GetAngle(); }

@@ -22,7 +22,7 @@ void RobotContainer::ConfigureBindings() {
 }
 
 frc2::CommandPtr RobotContainer::GetAutonomousCommand() {
-	BalanceAuto balanceAuto = BalanceAuto(0.3_s, 0.5, &m_drive);
+	BalanceAuto balanceAuto = BalanceAuto(96.0, 0.7, &m_drive);
 
 	return frc2::CommandPtr(balanceAuto).AsProxy().AndThen(frc2::cmd::Print("ahoy-hoy"));
 };

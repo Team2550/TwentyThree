@@ -6,6 +6,7 @@
 
 #include <frc2/command/CommandPtr.h>
 #include <frc2/command/Commands.h>
+#include <frc2/command/FunctionalCommand.h>
 #include <frc2/command/button/CommandXboxController.h>
 #include <units/angle.h>
 

@@ -38,6 +38,13 @@ class DriveSubsystem : public frc2::SubsystemBase {
 	 */
 	frc::Encoder& GetRightEncoder();
 
+	/**
+	 * Gets the average encoder distance between 2 encoders.
+	 *
+	 * @return the average of the 2 encoder readings.
+	 */
+	double GetAverageEncoderDistance();
+
 	/// @brief Sets the yaw axis of the IMU.
 	/// @param imuAxis The axis to use for the yaw.
 	void SetYawAxis(frc::ADIS16470_IMU::IMUAxis imuAxis);
