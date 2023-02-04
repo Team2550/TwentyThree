@@ -12,16 +12,24 @@
 
 #include "subsystems/DriveSubsystem.h"
 
-class BalanceAuto : public frc2::CommandHelper<frc2::CommandBase, BalanceAuto> {
+class DriveForward : public frc2::CommandHelper<frc2::CommandBase, DriveForward> {
    public:
 	/**
-	 * Creates a new BalanceAuto.
+	 * Creates a new DriveForward.
 	 *
-	 * @param time The amount of seconds that the robot will drive.
 	 * @param speed The speed at which the robot will drive
 	 * @param drive The drive subsystem on which this command will run
 	 */
-	explicit BalanceAuto(double inches, double speed, DriveSubsystem* subsystem);
+	explicit DriveForward(double speed, DriveSubsystem* subsystem);
+
+	/**
+	 * Creates a new DriveForward.
+	 *
+	 * @param speed The speed at which the robot will drive.
+	 * @param distance The distance the robot will drive.
+	 * @param drive The drive subsystem on which this command will run.
+	 */
+	explicit DriveForward(double speed, double distance, DriveSubsystem* subsystem);
 
 	void Initialize() override;
 
@@ -33,7 +41,6 @@ class BalanceAuto : public frc2::CommandHelper<frc2::CommandBase, BalanceAuto> {
 
    private:
 	DriveSubsystem* m_drive;
+	std::optional<double> m_distance;
 	double m_speed;
-	double m_distance;
-	bool m_isComposed = true;
 };

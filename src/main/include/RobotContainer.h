@@ -11,6 +11,8 @@
 #include <units/angle.h>
 
 #include "Constants.h"
+#include "commands/DriveForward.h"
+#include "sequences/BalanceAuto.h"
 #include "subsystems/DriveSubsystem.h"
 
 class RobotContainer {

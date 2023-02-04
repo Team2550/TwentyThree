@@ -29,7 +29,7 @@ constexpr int kRightEncoderPorts[] = {2, 3};
 constexpr bool kLeftEncoderReversed = false;
 constexpr bool kRightEncoderReversed = true;
 
-constexpr int kEncoderCPR = 512;
+constexpr int kEncoderCPR = 1024;
 constexpr double kWheelDiameterInches = 6;
 constexpr double kEncoderDistancePerPulse =
 	// TODO: Fix this

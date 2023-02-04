@@ -4,11 +4,6 @@
 
 #include "RobotContainer.h"
 
-#include <frc2/command/Commands.h>
-#include <frc2/command/FunctionalCommand.h>
-
-#include "commands/BalanceAuto.h"
-
 RobotContainer::RobotContainer() { ConfigureBindings(); }
 
 void RobotContainer::ConfigureBindings() {
@@ -22,7 +17,7 @@ void RobotContainer::ConfigureBindings() {
 }
 
 frc2::CommandPtr RobotContainer::GetAutonomousCommand() {
-	BalanceAuto balanceAuto = BalanceAuto(96.0, 0.7, &m_drive);
+	DriveForward driveForward = DriveForward(0.5, &m_drive);
 
-	return frc2::CommandPtr(balanceAuto).AsProxy().AndThen(frc2::cmd::Print("ahoy-hoy"));
+	return frc2::CommandPtr(BalanceAuto(&m_drive)).WithTimeout(15.0_s);
 };
