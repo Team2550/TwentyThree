@@ -34,7 +34,8 @@ class DriveForwardTimed : public frc2::CommandHelper<frc2::CommandBase, DriveFor
 
    private:
 	DriveSubsystem* m_drive;
-	std::chrono::duration<int64_t, std::nano> m_time;
+	int m_msOccurred = 0;
+	int m_desiredMs;
 
 	double m_speed;
 };
