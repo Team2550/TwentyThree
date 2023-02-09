@@ -17,7 +17,5 @@ void RobotContainer::ConfigureBindings() {
 }
 
 frc2::CommandPtr RobotContainer::GetAutonomousCommand() {
-	DriveForward driveForward = DriveForward(0.5, &m_drive);
-
 	return frc2::CommandPtr(BalanceAuto(&m_drive)).WithTimeout(15.0_s);
 };
