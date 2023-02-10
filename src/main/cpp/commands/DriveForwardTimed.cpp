@@ -8,13 +8,17 @@ DriveForwardTimed::DriveForwardTimed(double speed, units::second_t time, DriveSu
 
 void DriveForwardTimed::Initialize() {
 	m_drive->ResetEncoders();
+	heading = m_drive->GetCurrentAngle().value();
 }
 
-void DriveForwardTimed::Execute() { 
-	m_drive->ArcadeDrive(m_speed, 0);
+void DriveForwardTimed::Execute() {
+	frc::SmartDashboard::PutNumber("Y Axis Value", (m_drive->GetCurrentAngle().value()));
+	double error = heading - m_drive->GetCurrentAngle().value();
+
+	m_drive->TankDrive(m_speed + kP * error, m_speed - kP * error);
 	m_msOccurred += 20;
 }
 
-void DriveForwardTimed::End(bool interrupted) { m_drive->ArcadeDrive(0, 0); }
+void DriveForwardTimed::End(bool interrupted) { m_drive->TankDrive(0, 0); }
 
 bool DriveForwardTimed::IsFinished() { return m_msOccurred >= m_desiredMs; }

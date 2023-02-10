@@ -38,4 +38,10 @@ class DriveForwardTimed : public frc2::CommandHelper<frc2::CommandBase, DriveFor
 	int m_desiredMs;
 
 	double m_speed;
+
+	// The gain for a simple P loop
+	double kP = 1;
+
+	// The heading of the robot when starting the motion
+	double heading;
 };
