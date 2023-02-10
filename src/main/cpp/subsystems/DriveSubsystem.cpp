@@ -20,6 +20,8 @@ DriveSubsystem::DriveSubsystem()
 
 void DriveSubsystem::ArcadeDrive(double speed, double rotation) { m_drive.ArcadeDrive(rotation, speed); }
 
+void DriveSubsystem::TankDrive(double leftSpeed, double rightSpeed) { m_drive.TankDrive(leftSpeed, -rightSpeed); }
+
 void DriveSubsystem::ResetEncoders() {
 	m_leftEncoder.Reset();
 	m_rightEncoder.Reset();

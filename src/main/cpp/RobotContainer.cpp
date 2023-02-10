@@ -10,8 +10,17 @@ void RobotContainer::ConfigureBindings() {
 	m_drive.SetDefaultCommand(
 		// The default command (i.e, what we do when not running anything else.)
 		// Make sure to compensate for the controllers' inverted Y axes on the stick
+
 		frc2::cmd::Run([this] { m_drive.ArcadeDrive(-m_driverController.GetLeftY(), m_driverController.GetRightX()); },
 					   {&m_drive}));
+
+	// Left this in for testing reasons, why is everything backwards when compared to Arcade???
+	// What is this horrible-ness????
+
+	/*
+	frc2::cmd::Run([this] { m_drive.TankDrive(m_driverController.GetRightY(), m_driverController.GetLeftY()); },
+				   {&m_drive}));
+	*/
 
 	frc2::CommandPtr driveDashboard = m_drive.OutputToSmartDashboard().Repeatedly();
 }

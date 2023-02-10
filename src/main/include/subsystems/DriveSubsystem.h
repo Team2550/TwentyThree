@@ -23,6 +23,14 @@ class DriveSubsystem : public frc2::SubsystemBase {
 	 */
 	void ArcadeDrive(double speed, double rotation);
 
+	/***
+	 * @brief Drives the robot using tank controls.
+	 *
+	 * @param leftSpeed The speed to run the left-side motors.
+	 * @param rightSpeed The speed to run the right-side motors.
+	 */
+	void TankDrive(double leftSpeed, double rightSpeed);
+
 	/**
 	 * @brief Resets the drive encoders to read zero.
 	 */
