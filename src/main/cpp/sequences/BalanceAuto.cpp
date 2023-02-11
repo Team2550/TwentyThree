@@ -2,4 +2,4 @@
 
 #include "commands/DriveForwardTimed.h"
 
-BalanceAuto::BalanceAuto(DriveSubsystem* subsystem) { AddCommands(DriveForward(0.5, 1.0_m, subsystem)); }
+BalanceAuto::BalanceAuto(DriveSubsystem* subsystem) { AddCommands(DriveForward(1, 1.0_m, subsystem)); }

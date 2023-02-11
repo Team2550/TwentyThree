@@ -17,7 +17,7 @@ void DriveForward::Execute() {
 	frc::SmartDashboard::PutNumber("Y Axis Value", (m_drive->GetCurrentAngle().value()));
 	double error = heading - m_drive->GetCurrentAngle().value();
 
-	m_drive->TankDrive(m_speed - (kP * error), m_speed + (kP * error));
+	m_drive->TankDrive(m_speed + (kP * error), m_speed - (kP * error));
 }
 
 void DriveForward::End(bool interrupted) { m_drive->TankDrive(0, 0); }

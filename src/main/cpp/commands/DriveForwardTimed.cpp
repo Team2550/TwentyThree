@@ -16,7 +16,7 @@ void DriveForwardTimed::Execute() {
 	frc::SmartDashboard::PutNumber("Y Axis Value", (m_drive->GetCurrentAngle().value()));
 	double error = heading - m_drive->GetCurrentAngle().value();
 
-	m_drive->TankDrive(m_speed - (kP * error), m_speed + (kP * error));
+	m_drive->TankDrive(m_speed + (kP * error), m_speed - (kP * error));
 	m_msOccurred += 20;
 }
 
