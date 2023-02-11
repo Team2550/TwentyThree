@@ -18,10 +18,10 @@ class DriveForward : public frc2::CommandHelper<frc2::CommandBase, DriveForward>
 	 * Creates a new DriveForward.
 	 *
 	 * @param speed The speed at which the robot will drive.
-	 * @param distance The distance the robot will drive in inches.
+	 * @param distance The distance the robot will drive in meters.
 	 * @param drive The drive subsystem on which this command will run.
 	 */
-	explicit DriveForward(double speed, double distance, DriveSubsystem* subsystem);
+	explicit DriveForward(double speed, units::meter_t distance, DriveSubsystem* subsystem);
 
 	void Initialize() override;
 
@@ -33,6 +33,14 @@ class DriveForward : public frc2::CommandHelper<frc2::CommandBase, DriveForward>
 
    private:
 	DriveSubsystem* m_drive;
+	/// @brief The internal distance in inches (the encoders give this to us.)
+	/// Yes, I do know it's dumb.
 	double m_distance;
 	double m_speed;
+
+	// The gain for a simple P loop
+	double kP = 0.5;
+
+	// The heading of the robot when starting the motion
+	double heading;
 };

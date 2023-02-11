@@ -37,6 +37,11 @@ class DriveSubsystem : public frc2::SubsystemBase {
 	void ResetEncoders();
 
 	/**
+	 * @brief Resets the imu to read zero.
+	 */
+	void ResetGyro();
+
+	/**
 	 * @brief Gets the left drive encoder.
 	 */
 	frc::Encoder& GetLeftEncoder();
