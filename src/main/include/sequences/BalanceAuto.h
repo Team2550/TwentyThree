@@ -5,6 +5,8 @@
 #include <frc2/command/WaitCommand.h>
 
 #include "commands/DriveForward.h"
+#include "commands/DriveForwardTimed.h"
+#include "commands/DriveTurn.h"
 #include "subsystems/DriveSubsystem.h"
 
 class BalanceAuto : public frc2::CommandHelper<frc2::SequentialCommandGroup, BalanceAuto> {
