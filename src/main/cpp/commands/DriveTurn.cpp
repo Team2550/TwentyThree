@@ -9,10 +9,11 @@ void DriveTurn::Initialize() {
 	m_drive->ResetGyro();
 	m_drive->ResetEncoders();
 	heading = m_drive->GetCurrentAngle().value();
+	target = heading + m_turnheading;
 }
 
 void DriveTurn::Execute() {
-	double error = m_turnheading - heading;
+	double error = target - m_drive->GetCurrentAngle().value();
 
 	double kP = 0.1;
 
@@ -22,10 +23,4 @@ void DriveTurn::Execute() {
 void DriveTurn::End(bool interrupted) { m_drive->TankDrive(0, 0); }
 
 // Figure out how to test if the turn is complete.
-bool DriveTurn::IsFinished() {
-	double currentAngle = m_drive->GetCurrentAngle().value();
-	if ((currentAngle < (m_turnheading + 0.5) && (m_turnheading - 0.5) < currentAngle)) {
-		return true;
-	};
-	return false;
-}
+bool DriveTurn::IsFinished() { return std::abs(target - m_drive->GetCurrentAngle().value()) < 3; }

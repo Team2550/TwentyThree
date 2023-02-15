@@ -34,6 +34,7 @@ class DriveTurn : public frc2::CommandHelper<frc2::CommandBase, DriveTurn> {
    private:
 	DriveSubsystem* m_drive;
 	double m_turnheading;
+	double target;
 	double m_speed;
 
 	// The gain for a simple P loop
