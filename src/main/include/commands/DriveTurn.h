@@ -13,7 +13,7 @@
 #include "subsystems/DriveSubsystem.h"
 
 class DriveTurn : public frc2::CommandHelper<frc2::CommandBase, DriveTurn> {
-   public:
+public:
 	/**
 	 * Creates a new DriveTurn.
 	 *
@@ -31,7 +31,7 @@ class DriveTurn : public frc2::CommandHelper<frc2::CommandBase, DriveTurn> {
 
 	bool IsFinished() override;
 
-   private:
+private:
 	DriveSubsystem* m_drive;
 	double m_turnheading;
 	double target;

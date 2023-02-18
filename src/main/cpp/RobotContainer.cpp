@@ -12,7 +12,7 @@ void RobotContainer::ConfigureBindings() {
 		// Make sure to compensate for the controllers' inverted Y axes on the stick
 
 		frc2::cmd::Run([this] { m_drive.ArcadeDrive(-m_driverController.GetLeftY(), m_driverController.GetRightX()); },
-					   {&m_drive}));
+			{ &m_drive }));
 
 	// Left this in for testing reasons, why is everything backwards when compared to Arcade???
 	// What is this horrible-ness????
@@ -25,6 +25,4 @@ void RobotContainer::ConfigureBindings() {
 	frc2::CommandPtr driveDashboard = m_drive.OutputToSmartDashboard().Repeatedly();
 }
 
-frc2::CommandPtr RobotContainer::GetAutonomousCommand() {
-	return frc2::CommandPtr(BalanceAuto(&m_drive)).WithTimeout(15.0_s);
-};
+frc2::CommandPtr RobotContainer::GetAutonomousCommand() { return frc2::CommandPtr(BalanceAuto(&m_drive)); };
