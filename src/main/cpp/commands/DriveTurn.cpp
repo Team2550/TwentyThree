@@ -23,4 +23,4 @@ void DriveTurn::Execute() {
 void DriveTurn::End(bool interrupted) { m_drive->TankDrive(0, 0); }
 
 // Figure out how to test if the turn is complete.
-bool DriveTurn::IsFinished() { return std::abs(target - m_drive->GetCurrentAngle().value()) < 3; }
+bool DriveTurn::IsFinished() { return std::abs(target - m_drive->GetCurrentAngle().value()) < 10; }
