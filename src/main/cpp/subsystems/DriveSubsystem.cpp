@@ -3,13 +3,13 @@
 using namespace DriveConstants;
 
 DriveSubsystem::DriveSubsystem()
-	: m_frontLeft{kLeftMotorPorts[0]},
-	  m_rearLeft{kLeftMotorPorts[1]},
-	  m_frontRight{kRightMotorPorts[0]},
-	  m_rearRight{kRightMotorPorts[1]},
-	  m_leftEncoder{kLeftEncoderPorts[0], kLeftEncoderPorts[1], frc::Encoder::EncodingType::k2X},
-	  m_rightEncoder{kRightEncoderPorts[0], kRightEncoderPorts[1], frc::Encoder::EncodingType::k2X},
-	  m_imu{} {
+	: m_frontLeft { kLeftMotorPorts[0] }
+	, m_rearLeft { kLeftMotorPorts[1] }
+	, m_frontRight { kRightMotorPorts[0] }
+	, m_rearRight { kRightMotorPorts[1] }
+	, m_leftEncoder { kLeftEncoderPorts[0], kLeftEncoderPorts[1], frc::Encoder::EncodingType::k2X }
+	, m_rightEncoder { kRightEncoderPorts[0], kRightEncoderPorts[1], frc::Encoder::EncodingType::k2X }
+	, m_imu {} {
 	// Set the distance per pulse for the encoders
 	m_leftEncoder.SetDistancePerPulse(kEncoderDistancePerPulse);
 	m_rightEncoder.SetDistancePerPulse(kEncoderDistancePerPulse);
@@ -42,6 +42,14 @@ void DriveSubsystem::SetYawAxis(frc::ADIS16470_IMU::IMUAxis imuAxis) { m_imu.Set
 units::angle::degree_t DriveSubsystem::GetCurrentAngle() { return m_imu.GetAngle(); }
 
 void DriveSubsystem::SetOutputScale(double scale) { m_drive.SetMaxOutput(scale); }
+
+void DriveSubsystem::MoveArm(double upTrigger, double downTrigger) {
+	if (upTrigger > 0 && downTrigger == 0) {
+		frc::SmartDashboard::PutNumber("UP value", upTrigger);
+	} else if (upTrigger == 0 && downTrigger > 0) {
+		frc::SmartDashboard::PutNumber("DOWN value", downTrigger);
+	}
+}
 
 frc2::CommandPtr DriveSubsystem::OutputToSmartDashboard() {
 	return this->Run([this] {

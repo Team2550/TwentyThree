@@ -36,6 +36,7 @@ private:
 	double m_turnheading;
 	double target;
 	double m_speed;
+	bool m_isComplete = false;
 
 	// The gain for a simple P loop
 	double kP = 0.5;

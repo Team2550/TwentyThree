@@ -12,7 +12,7 @@
 #include "Constants.h"
 
 class DriveSubsystem : public frc2::SubsystemBase {
-   public:
+public:
 	DriveSubsystem();
 
 	/***
@@ -30,6 +30,14 @@ class DriveSubsystem : public frc2::SubsystemBase {
 	 * @param rightSpeed The speed to run the right-side motors.
 	 */
 	void TankDrive(double leftSpeed, double rightSpeed);
+
+	/***
+	 * @brief Moves the manipulator
+	 *
+	 * @param upTrigger The trigger to use for moving up
+	 * @param downTrigger The trigger to use for moving down
+	 */
+	void MoveArm(double upTrigger, double downTrigger);
 
 	/**
 	 * @brief Resets the drive encoders to read zero.
@@ -77,15 +85,15 @@ class DriveSubsystem : public frc2::SubsystemBase {
 	/// @brief Outputs the DriveSubsystem's SmartDashboard data to SmartDashboard
 	frc2::CommandPtr OutputToSmartDashboard();
 
-   private:
+private:
 	// Motor Controllers
 	frc::Spark m_frontLeft;
 	frc::Spark m_rearLeft;
-	frc::MotorControllerGroup m_left{m_frontLeft, m_rearLeft};
+	frc::MotorControllerGroup m_left { m_frontLeft, m_rearLeft };
 
 	frc::Spark m_frontRight;
 	frc::Spark m_rearRight;
-	frc::MotorControllerGroup m_right{m_frontRight, m_rearRight};
+	frc::MotorControllerGroup m_right { m_frontRight, m_rearRight };
 
 	// Encoders
 	frc::Encoder m_leftEncoder;
@@ -95,5 +103,5 @@ class DriveSubsystem : public frc2::SubsystemBase {
 	frc::ADIS16470_IMU m_imu;
 
 	// Drive Controller
-	frc::DifferentialDrive m_drive{m_left, m_right};
+	frc::DifferentialDrive m_drive { m_left, m_right };
 };
