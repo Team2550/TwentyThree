@@ -14,6 +14,7 @@
 #include <units/angle.h>
 
 #include "Constants.h"
+#include "commands/ArcadeDrive.h"
 #include "commands/DriveForward.h"
 #include "commands/MoveArm.h"
 #include "sequences/BalanceAuto.h"
@@ -33,5 +34,4 @@ private:
 	DriveSubsystem m_drive;
 
 	void ConfigureBindings();
-	void ConfigureButtonBindings();
 };

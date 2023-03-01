@@ -8,6 +8,7 @@ DriveTurn::DriveTurn(double speed, double turnheading, DriveSubsystem* subsystem
 }
 
 void DriveTurn::Initialize() {
+	m_drive->SetYawAxis(frc::ADIS16470_IMU::kZ);
 	m_drive->ResetGyro();
 	heading = m_drive->GetCurrentAngle().value();
 	target = heading + m_turnheading;
@@ -24,4 +25,4 @@ void DriveTurn::Execute() {
 void DriveTurn::End(bool interrupted) { m_drive->TankDrive(0, 0); }
 
 // Figure out how to test if the turn is complete.
-bool DriveTurn::IsFinished() { return m_drive->GetCurrentAngle().value() >= (target - 4); }
+bool DriveTurn::IsFinished() { return std::abs(target - m_drive->GetCurrentAngle().value()) < 10; }

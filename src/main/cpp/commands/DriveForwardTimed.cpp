@@ -1,8 +1,9 @@
 #include "commands/DriveForwardTimed.h"
 
 DriveForwardTimed::DriveForwardTimed(double speed, units::second_t time, DriveSubsystem* subsystem)
-	: m_drive(subsystem), m_speed(speed) {
-	AddRequirements({subsystem});
+	: m_drive(subsystem)
+	, m_speed(speed) {
+	AddRequirements({ subsystem });
 	m_desiredMs = int(units::millisecond_t(time).value());
 }
 

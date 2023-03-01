@@ -34,10 +34,9 @@ public:
 	/***
 	 * @brief Moves the manipulator
 	 *
-	 * @param upTrigger The trigger to use for moving up
-	 * @param downTrigger The trigger to use for moving down
+	 * @param value The speed of which to move.
 	 */
-	void MoveArm(double upTrigger, double downTrigger);
+	void MoveArm(double value);
 
 	/**
 	 * @brief Resets the drive encoders to read zero.
@@ -82,9 +81,6 @@ public:
 	 */
 	void SetOutputScale(double scale);
 
-	/// @brief Outputs the DriveSubsystem's SmartDashboard data to SmartDashboard
-	frc2::CommandPtr OutputToSmartDashboard();
-
 private:
 	// Motor Controllers
 	frc::Spark m_frontLeft;
@@ -94,6 +90,8 @@ private:
 	frc::Spark m_frontRight;
 	frc::Spark m_rearRight;
 	frc::MotorControllerGroup m_right { m_frontRight, m_rearRight };
+
+	frc::Spark m_manipulator;
 
 	// Encoders
 	frc::Encoder m_leftEncoder;

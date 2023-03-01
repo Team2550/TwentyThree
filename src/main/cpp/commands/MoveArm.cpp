@@ -10,10 +10,10 @@ MoveArm::MoveArm(double upTrigger, double downTrigger, DriveSubsystem* subsystem
 void MoveArm::Initialize() { }
 
 void MoveArm::Execute() {
-	frc::SmartDashboard::PutNumber("UP value", (m_driverController.GetLeftTriggerAxis()));
-	frc::SmartDashboard::PutNumber("DOWN value", (m_driverController.GetRightTriggerAxis()));
+	m_drive->MoveArm(upTrigger);
+	m_drive->MoveArm(downTrigger);
 }
 
-void MoveArm::End(bool interrupted) { }
+void MoveArm::End(bool interrupted) { m_drive->MoveArm(0.0); }
 
 bool MoveArm::IsFinished() { return false; }

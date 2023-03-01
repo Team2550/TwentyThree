@@ -7,6 +7,7 @@ DriveSubsystem::DriveSubsystem()
 	, m_rearLeft { kLeftMotorPorts[1] }
 	, m_frontRight { kRightMotorPorts[0] }
 	, m_rearRight { kRightMotorPorts[1] }
+	, m_manipulator { kManiplulatorPort }
 	, m_leftEncoder { kLeftEncoderPorts[0], kLeftEncoderPorts[1], frc::Encoder::EncodingType::k2X }
 	, m_rightEncoder { kRightEncoderPorts[0], kRightEncoderPorts[1], frc::Encoder::EncodingType::k2X }
 	, m_imu {} {
@@ -43,20 +44,4 @@ units::angle::degree_t DriveSubsystem::GetCurrentAngle() { return m_imu.GetAngle
 
 void DriveSubsystem::SetOutputScale(double scale) { m_drive.SetMaxOutput(scale); }
 
-void DriveSubsystem::MoveArm(double upTrigger, double downTrigger) {
-	if (upTrigger > 0 && downTrigger == 0) {
-		frc::SmartDashboard::PutNumber("UP value", upTrigger);
-	} else if (upTrigger == 0 && downTrigger > 0) {
-		frc::SmartDashboard::PutNumber("DOWN value", downTrigger);
-	}
-}
-
-frc2::CommandPtr DriveSubsystem::OutputToSmartDashboard() {
-	return this->Run([this] {
-		// Get data for SmartDashboard
-		units::angle::degree_t degrees = this->GetCurrentAngle();
-
-		// Publish the SmartDashboard data
-		frc::SmartDashboard::PutNumber("Y axis degrees", degrees.value());
-	});
-}
+void DriveSubsystem::MoveArm(double value) { m_manipulator.Set(value); }
