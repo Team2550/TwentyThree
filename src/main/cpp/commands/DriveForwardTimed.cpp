@@ -10,6 +10,7 @@ DriveForwardTimed::DriveForwardTimed(double speed, units::second_t time, DriveSu
 void DriveForwardTimed::Initialize() {
 	m_drive->ResetGyro();
 	m_drive->ResetEncoders();
+	m_drive->SetYawAxis(frc::ADIS16470_IMU::kX);
 	heading = m_drive->GetCurrentAngle().value();
 }
 

@@ -11,6 +11,7 @@ DriveForward::DriveForward(double speed, units::meter_t distance, DriveSubsystem
 
 void DriveForward::Initialize() {
 	m_drive->ResetEncoders();
+	m_drive->SetYawAxis(frc::ADIS16470_IMU::kX);
 	heading = m_drive->GetCurrentAngle().value();
 }
 
@@ -26,4 +27,4 @@ void DriveForward::Execute() {
 
 void DriveForward::End(bool interrupted) { m_drive->TankDrive(0, 0); }
 
-bool DriveForward::IsFinished() { return m_drive->GetAverageEncoderDistance() >= m_distance; }
+bool DriveForward::IsFinished() { return std::abs(m_drive->GetRightEncoder().GetDistance()) >= 1.0; }
