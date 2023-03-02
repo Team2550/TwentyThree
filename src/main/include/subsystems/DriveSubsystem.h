@@ -38,6 +38,16 @@ public:
 	 */
 	void MoveArm(double value);
 
+	/***
+	 * @brief Actuates the hand
+	 */
+	void ArmGrab();
+
+	/***
+	 * @brief Deactuates the hand
+	 */
+	void ArmRelease();
+
 	/**
 	 * @brief Resets the drive encoders to read zero.
 	 */
@@ -92,6 +102,7 @@ private:
 	frc::MotorControllerGroup m_right { m_frontRight, m_rearRight };
 
 	frc::Spark m_manipulator;
+	frc::Spark m_manipulatorHand;
 
 	// Encoders
 	frc::Encoder m_leftEncoder;

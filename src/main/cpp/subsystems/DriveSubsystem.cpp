@@ -8,6 +8,7 @@ DriveSubsystem::DriveSubsystem()
 	, m_frontRight { kRightMotorPorts[0] }
 	, m_rearRight { kRightMotorPorts[1] }
 	, m_manipulator { kManiplulatorPort }
+	, m_manipulatorHand { kManiplulatorHandPort }
 	, m_leftEncoder { kLeftEncoderPorts[0], kLeftEncoderPorts[1], frc::Encoder::EncodingType::k2X }
 	, m_rightEncoder { kRightEncoderPorts[0], kRightEncoderPorts[1], frc::Encoder::EncodingType::k2X }
 	, m_imu {} {
@@ -45,3 +46,7 @@ units::angle::degree_t DriveSubsystem::GetCurrentAngle() { return m_imu.GetAngle
 void DriveSubsystem::SetOutputScale(double scale) { m_drive.SetMaxOutput(scale); }
 
 void DriveSubsystem::MoveArm(double value) { m_manipulator.Set(value); }
+
+void DriveSubsystem::ArmGrab() { m_manipulatorHand.Set(1.0); }
+
+void DriveSubsystem::ArmRelease() { m_manipulatorHand.Set(-1.0); }

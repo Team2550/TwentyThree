@@ -30,6 +30,7 @@ constexpr bool kLeftEncoderReversed = false;
 constexpr bool kRightEncoderReversed = true;
 
 constexpr int kManiplulatorPort = 4;
+constexpr int kManiplulatorHandPort = 5;
 
 constexpr int kEncoderCPR = 1024;
 constexpr double kWheelDiameterInches = 6;

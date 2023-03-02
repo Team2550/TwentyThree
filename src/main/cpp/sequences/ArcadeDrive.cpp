@@ -1,4 +1,4 @@
-#include "commands/ArcadeDrive.h"
+#include "sequences/ArcadeDrive.h"
 
 ArcadeDrive::ArcadeDrive(DriveSubsystem* subsystem)
 	: m_drive(subsystem) {
@@ -12,13 +12,12 @@ void ArcadeDrive::Execute() {
 
 	frc::SmartDashboard::PutNumber("Forward speed:", -m_driverController.GetLeftY());
 	frc::SmartDashboard::PutNumber("Turning speed:", -m_driverController.GetRightX());
-
 	if (m_driverController.GetLeftTriggerAxis() < m_driverController.GetRightTriggerAxis()) {
 		m_drive->MoveArm(m_driverController.GetRightTriggerAxis());
 		frc::SmartDashboard::PutString("Arm status:", "MOVING UP");
 	} else {
 		if (m_driverController.GetLeftTriggerAxis() > m_driverController.GetRightTriggerAxis()) {
-			m_drive->MoveArm((-m_driverController.GetLeftTriggerAxis()) * 0.25);
+			m_drive->MoveArm((-m_driverController.GetLeftTriggerAxis()) * 0.05);
 			frc::SmartDashboard::PutString("Arm status:", "MOVING DOWN");
 		};
 	}

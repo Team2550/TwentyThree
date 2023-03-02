@@ -7,6 +7,14 @@
 
 RobotContainer::RobotContainer() { ConfigureBindings(); }
 
-void RobotContainer::ConfigureBindings() { m_drive.SetDefaultCommand(ArcadeDrive(&m_drive).ToPtr()); }
+void RobotContainer::ConfigureBindings() {
+	m_drive.SetDefaultCommand(ArcadeDrive(&m_drive).ToPtr());
+	ConfigureButtonBindings();
+}
+
+void RobotContainer::ConfigureButtonBindings() {
+	m_driverController.A().OnTrue(ArmHand(ArmHand::Value::kGrab, &m_drive).ToPtr());
+	m_driverController.B().OnTrue(ArmHand(ArmHand::Value::kRelease, &m_drive).ToPtr());
+}
 
 frc2::CommandPtr RobotContainer::GetAutonomousCommand() { return frc2::CommandPtr(BalanceAuto(&m_drive)); };
