@@ -15,6 +15,9 @@ void Robot::DisabledPeriodic() { }
 void Robot::DisabledExit() { }
 
 void Robot::AutonomousInit() {
+	if (m_testCommand) {
+		m_testCommand->Cancel();
+	}
 	m_autonomousCommand = m_container.GetAutonomousCommand();
 
 	if (m_autonomousCommand) {
@@ -27,6 +30,9 @@ void Robot::AutonomousPeriodic() { }
 void Robot::AutonomousExit() { }
 
 void Robot::TeleopInit() {
+	if (m_testCommand) {
+		m_testCommand->Cancel();
+	}
 	if (m_autonomousCommand) {
 		// Make sure the auto command isn't still running (this would cause a conflict!)
 		m_autonomousCommand->Cancel();
@@ -37,7 +43,13 @@ void Robot::TeleopPeriodic() { }
 
 void Robot::TeleopExit() { }
 
-void Robot::TestInit() { frc2::CommandScheduler::GetInstance().CancelAll(); }
+void Robot::TestInit() {
+	m_testCommand = m_container.GetTestCommand();
+
+	if (m_testCommand) {
+		m_testCommand->Schedule();
+	}
+}
 
 void Robot::TestPeriodic() { }
 

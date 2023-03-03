@@ -18,3 +18,7 @@ void RobotContainer::ConfigureButtonBindings() {
 }
 
 frc2::CommandPtr RobotContainer::GetAutonomousCommand() { return frc2::CommandPtr(BalanceAuto(&m_drive)); };
+
+frc2::CommandPtr RobotContainer::GetTestCommand() {
+	return frc2::CommandPtr(ArmHand(ArmHand::Value::kGrab, &m_drive).ToPtr());
+};

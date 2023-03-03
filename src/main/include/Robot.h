@@ -34,6 +34,7 @@ public:
 
 private:
 	std::optional<frc2::CommandPtr> m_autonomousCommand;
+	std::optional<frc2::CommandPtr> m_testCommand;
 
 	RobotContainer m_container;
 };

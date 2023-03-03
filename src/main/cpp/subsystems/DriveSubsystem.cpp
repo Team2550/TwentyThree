@@ -47,6 +47,6 @@ void DriveSubsystem::SetOutputScale(double scale) { m_drive.SetMaxOutput(scale);
 
 void DriveSubsystem::MoveArm(double value) { m_manipulator.Set(value); }
 
-void DriveSubsystem::ArmGrab() { m_manipulatorHand.Set(1.0); }
+void DriveSubsystem::ArmGrab() { m_manipulatorHand.Set(-1.0); }
 
-void DriveSubsystem::ArmRelease() { m_manipulatorHand.Set(-1.0); }
+void DriveSubsystem::ArmRelease() { m_manipulatorHand.Set(1.0); }

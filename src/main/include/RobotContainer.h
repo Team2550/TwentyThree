@@ -27,6 +27,8 @@ public:
 
 	frc2::CommandPtr GetAutonomousCommand();
 
+	frc2::CommandPtr GetTestCommand();
+
 private:
 	// The driver's controller.
 	frc2::CommandXboxController m_driverController { OIConstants::kDriverControllerPort };
