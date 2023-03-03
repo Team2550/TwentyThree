@@ -50,3 +50,5 @@ void DriveSubsystem::MoveArm(double value) { m_manipulator.Set(value); }
 void DriveSubsystem::ArmGrab() { m_manipulatorHand.Set(-1.0); }
 
 void DriveSubsystem::ArmRelease() { m_manipulatorHand.Set(1.0); }
+
+void DriveSubsystem::ArmRest() { m_manipulatorHand.Set(0.0); }

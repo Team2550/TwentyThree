@@ -48,6 +48,11 @@ public:
 	 */
 	void ArmRelease();
 
+	/***
+	 * @brief the hand
+	 */
+	void ArmRest();
+
 	/**
 	 * @brief Resets the drive encoders to read zero.
 	 */

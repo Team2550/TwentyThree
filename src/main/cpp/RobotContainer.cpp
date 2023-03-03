@@ -12,11 +12,7 @@ void RobotContainer::ConfigureBindings() {
 	ConfigureButtonBindings();
 }
 
-void RobotContainer::ConfigureButtonBindings() {
-	// Hack this to allow manual grab/release amounts.
-	m_driverController.A().OnTrue(frc2::cmd::Run([this] { this->m_drive.ArmGrab(); }));
-	m_driverController.B().OnTrue(frc2::cmd::Run([this] { this->m_drive.ArmRelease(); }));
-}
+void RobotContainer::ConfigureButtonBindings() { }
 
 frc2::CommandPtr RobotContainer::GetAutonomousCommand() { return frc2::CommandPtr(BalanceAuto(&m_drive)); };
 

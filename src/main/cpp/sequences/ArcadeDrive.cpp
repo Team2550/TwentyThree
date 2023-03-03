@@ -17,13 +17,23 @@ void ArcadeDrive::Execute() {
 		frc::SmartDashboard::PutString("Arm status:", "MOVING UP");
 	} else {
 		if (m_driverController.GetLeftTriggerAxis() > m_driverController.GetRightTriggerAxis()) {
-			m_drive->MoveArm((-m_driverController.GetLeftTriggerAxis()) * 0.05);
+			m_drive->MoveArm((-m_driverController.GetLeftTriggerAxis()) * 0.5);
 			frc::SmartDashboard::PutString("Arm status:", "MOVING DOWN");
 		};
 	}
 	if (m_driverController.GetLeftTriggerAxis() == m_driverController.GetRightTriggerAxis()) {
 		m_drive->MoveArm(0.0);
 		frc::SmartDashboard::PutString("Arm status:", "NOT MOVING");
+	}
+
+	if (m_driverController.GetAButton() == 1 && m_driverController.GetBButton() == 0) {
+		m_drive->ArmGrab();
+	}
+	if (m_driverController.GetBButton() == 1 && m_driverController.GetAButton() == 0) {
+		m_drive->ArmRelease();
+	}
+	if (m_driverController.GetBButton() == 0 && m_driverController.GetAButton() == 0) {
+		m_drive->ArmRest();
 	}
 }
 
