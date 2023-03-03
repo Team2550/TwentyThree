@@ -3,6 +3,7 @@
 #include <frc2/command/CommandHelper.h>
 #include <frc2/command/SequentialCommandGroup.h>
 
+#include "commands/ArmHand.h"
 #include "commands/DriveForward.h"
 #include "commands/DriveForwardTimed.h"
 #include "commands/DriveTurn.h"
