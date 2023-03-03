@@ -2,8 +2,8 @@
 
 MoveArm::MoveArm(double upTrigger, double downTrigger, DriveSubsystem* subsystem)
 	: m_drive(subsystem)
-	, downTrigger(downTrigger)
-	, upTrigger(upTrigger) {
+	, upTrigger(upTrigger)
+	, downTrigger(downTrigger) {
 	AddRequirements({ subsystem });
 }
 
