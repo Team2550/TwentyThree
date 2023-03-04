@@ -38,4 +38,5 @@ private:
 	double m_rotation;
 	// The driver's controller.
 	frc2::CommandXboxController m_driverController { OIConstants::kDriverControllerPort };
+	frc2::CommandXboxController m_armController { OIConstants::kArmControllerPort };
 };

@@ -48,4 +48,5 @@ constexpr auto kAutoShootTimeSeconds = 7_s;
 /// @brief These are constants for handling driver input.
 namespace OIConstants {
 constexpr int kDriverControllerPort = 0;
+constexpr int kArmControllerPort = 1;
 } // namespace OIConstants
