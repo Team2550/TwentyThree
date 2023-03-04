@@ -7,20 +7,10 @@ DriveForwardTimed::DriveForwardTimed(double speed, units::second_t time, DriveSu
 	m_desiredMs = int(units::millisecond_t(time).value());
 }
 
-void DriveForwardTimed::Initialize() {
-	m_drive->ResetGyro();
-	m_drive->ResetEncoders();
-	m_drive->SetYawAxis(frc::ADIS16470_IMU::kX);
-	heading = m_drive->GetCurrentAngle().value();
-}
+void DriveForwardTimed::Initialize() { }
 
 void DriveForwardTimed::Execute() {
-	frc::SmartDashboard::PutNumber("Y Axis Value", (m_drive->GetCurrentAngle().value()));
-	double error = heading - m_drive->GetCurrentAngle().value();
-
-	double kP = ((log(m_speed) + 1) / 2);
-
-	m_drive->TankDrive(m_speed + (kP * error), m_speed - (kP * error));
+	m_drive->TankDrive(m_speed, m_speed);
 	m_msOccurred += 20;
 }
 

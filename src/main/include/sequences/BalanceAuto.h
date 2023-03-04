@@ -9,6 +9,7 @@
 #include "commands/DriveTurn.h"
 #include "commands/WaitCommand.h"
 #include "subsystems/DriveSubsystem.h"
+#include <commands/ArmHandTimed.h>
 
 class BalanceAuto : public frc2::CommandHelper<frc2::SequentialCommandGroup, BalanceAuto> {
 public:

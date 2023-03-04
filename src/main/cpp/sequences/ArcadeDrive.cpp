@@ -33,10 +33,10 @@ void ArcadeDrive::Execute() {
 	}
 
 	if (m_armController.GetAButton() == 1 && m_armController.GetBButton() == 0) {
-		m_drive->ArmGrab();
+		m_drive->ArmRelease();
 	}
 	if (m_armController.GetBButton() == 1 && m_armController.GetAButton() == 0) {
-		m_drive->ArmRelease();
+		m_drive->ArmGrab();
 	}
 	if (m_armController.GetBButton() == 0 && m_armController.GetAButton() == 0) {
 		m_drive->ArmRest();
