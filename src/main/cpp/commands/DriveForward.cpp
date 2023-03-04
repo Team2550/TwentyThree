@@ -10,7 +10,7 @@ DriveForward::DriveForward(double speed, units::meter_t distance, DriveSubsystem
 
 void DriveForward::Initialize() {
 	m_drive->ResetEncoders();
-	m_drive->SetYawAxis(frc::ADIS16470_IMU::kY);
+	m_drive->SetYawAxis(frc::ADIS16470_IMU::kX);
 	heading = m_drive->GetCurrentAngle().value();
 }
 
