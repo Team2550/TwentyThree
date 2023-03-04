@@ -5,6 +5,7 @@
 #include <frc2/command/Commands.h>
 #include <frc2/command/FunctionalCommand.h>
 #include <frc2/command/ScheduleCommand.h>
+#include <subsystems/DriveSubsystem.h>
 
 #include <cmath>
 
@@ -28,4 +29,6 @@ public:
 private:
 	int m_msOccurred = 0;
 	int m_desiredMs;
+
+	DriveSubsystem* m_drive;
 };

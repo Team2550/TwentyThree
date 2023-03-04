@@ -4,7 +4,10 @@ WaitCommand::WaitCommand(units::second_t time) { m_desiredMs = int(units::millis
 
 void WaitCommand::Initialize() { }
 
-void WaitCommand::Execute() { m_msOccurred += 20; }
+void WaitCommand::Execute() {
+	m_msOccurred += 20;
+	m_drive->TankDrive(0, 0);
+}
 
 void WaitCommand::End(bool interrupted) { }
 

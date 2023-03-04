@@ -34,6 +34,7 @@ private:
 	DriveSubsystem* m_drive;
 
 	double m_speed;
+	double m_speedMult = 0.5;
 	double m_rotation;
 	// The driver's controller.
 	frc2::CommandXboxController m_driverController { OIConstants::kDriverControllerPort };

@@ -14,11 +14,7 @@ void DriveForward::Initialize() {
 	heading = m_drive->GetCurrentAngle().value();
 }
 
-void DriveForward::Execute() {
-	frc::SmartDashboard::PutNumber("Y Axis Value", (m_drive->GetCurrentAngle().value()));
-
-	m_drive->TankDrive(m_speed, m_speed);
-}
+void DriveForward::Execute() { m_drive->TankDrive(m_speed, m_speed); }
 
 void DriveForward::End(bool interrupted) { m_drive->TankDrive(0, 0); }
 
