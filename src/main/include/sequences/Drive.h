@@ -1,5 +1,6 @@
 #pragma once
 
+#include <frc/PowerDistribution.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
@@ -15,12 +16,12 @@
 #include "Constants.h"
 #include "subsystems/DriveSubsystem.h"
 
-class ArcadeDrive : public frc2::CommandHelper<frc2::CommandBase, ArcadeDrive> {
+class Drive : public frc2::CommandHelper<frc2::CommandBase, Drive> {
 public:
 	/***
 	 * @brief Drive and controls
 	 */
-	explicit ArcadeDrive(DriveSubsystem* subsystem);
+	explicit Drive(DriveSubsystem* subsystem);
 
 	void Initialize() override;
 

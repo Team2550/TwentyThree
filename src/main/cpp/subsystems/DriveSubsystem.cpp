@@ -52,3 +52,5 @@ void DriveSubsystem::ArmGrab() { m_manipulatorHand.Set(1.0); }
 void DriveSubsystem::ArmRelease() { m_manipulatorHand.Set(-1.0); }
 
 void DriveSubsystem::ArmRest() { m_manipulatorHand.Set(0.0); }
+
+double DriveSubsystem::GetCurrentCurrent() { return (m_pdp.GetTotalCurrent()); }

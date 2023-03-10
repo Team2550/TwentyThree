@@ -1,20 +1,29 @@
-#include "sequences/ArcadeDrive.h"
+#include "sequences/Drive.h"
 
-ArcadeDrive::ArcadeDrive(DriveSubsystem* subsystem)
+Drive::Drive(DriveSubsystem* subsystem)
 	: m_drive(subsystem) {
 	AddRequirements({ subsystem });
 }
 
-void ArcadeDrive::Initialize() { m_speedMult = 0.65; }
+void Drive::Initialize() { m_speedMult = 0.65; }
 
-void ArcadeDrive::Execute() {
+void Drive::Execute() {
+	double m_current = m_drive->GetCurrentCurrent();
+
 	if (m_driverController.GetRightBumper() == 1) {
 		frc::SmartDashboard::PutString("Turbo status:", "ON");
+		/*
 		m_drive->ArcadeDrive(((m_driverController.GetLeftY())), ((-m_driverController.GetRightX())));
+		*/
+		m_drive->TankDrive(((m_driverController.GetLeftY())), ((m_driverController.GetRightY())));
 	} else {
 		frc::SmartDashboard::PutString("Turbo status:", "OFF");
+		/*
 		m_drive->ArcadeDrive(
 			((m_driverController.GetLeftY()) * m_speedMult), ((-m_driverController.GetRightX()) * m_speedMult));
+		*/
+		m_drive->TankDrive(
+			((m_driverController.GetLeftY()) * m_speedMult), ((m_driverController.GetRightY()) * m_speedMult));
 	}
 	frc::SmartDashboard::PutNumber("Forward speed:", -m_driverController.GetLeftY());
 	frc::SmartDashboard::PutNumber("Turning speed:", -m_driverController.GetRightX());
@@ -43,6 +52,6 @@ void ArcadeDrive::Execute() {
 	}
 }
 
-void ArcadeDrive::End(bool interrupted) { }
+void Drive::End(bool interrupted) { }
 
-bool ArcadeDrive::IsFinished() { return false; }
+bool Drive::IsFinished() { return false; }

@@ -17,8 +17,8 @@
 #include "commands/ArmHand.h"
 #include "commands/DriveForward.h"
 #include "commands/MoveArm.h"
-#include "sequences/ArcadeDrive.h"
 #include "sequences/BalanceAuto.h"
+#include "sequences/Drive.h"
 #include "subsystems/DriveSubsystem.h"
 
 class RobotContainer {

@@ -2,6 +2,7 @@
 
 #include <frc/ADIS16470_IMU.h>
 #include <frc/Encoder.h>
+#include <frc/PowerDistribution.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/motorcontrol/MotorControllerGroup.h>
 #include <frc/motorcontrol/Spark.h>
@@ -96,6 +97,11 @@ public:
 	 */
 	void SetOutputScale(double scale);
 
+	/**
+	 * Gets the current current.
+	 */
+	double GetCurrentCurrent();
+
 private:
 	// Motor Controllers
 	frc::Spark m_frontLeft;
@@ -108,6 +114,9 @@ private:
 
 	frc::Spark m_manipulator;
 	frc::Spark m_manipulatorHand;
+
+	// PDP
+	frc::PowerDistribution m_pdp { 0, frc::PowerDistribution::ModuleType::kCTRE };
 
 	// Encoders
 	frc::Encoder m_leftEncoder;
