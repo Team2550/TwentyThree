@@ -1,6 +1,8 @@
 #pragma once
 
 #include <frc/ADIS16470_IMU.h>
+#include <frc/Compressor.h>
+#include <frc/DoubleSolenoid.h>
 #include <frc/Encoder.h>
 #include <frc/PowerDistribution.h>
 #include <frc/drive/DifferentialDrive.h>
@@ -97,11 +99,6 @@ public:
 	 */
 	void SetOutputScale(double scale);
 
-	/**
-	 * Gets the current current.
-	 */
-	double GetCurrentCurrent();
-
 private:
 	// Motor Controllers
 	frc::Spark m_frontLeft;
@@ -115,8 +112,8 @@ private:
 	frc::Spark m_manipulator;
 	frc::Spark m_manipulatorHand;
 
-	// PDP
-	frc::PowerDistribution m_pdp { 0, frc::PowerDistribution::ModuleType::kCTRE };
+	// Pneumatics
+	frc::DoubleSolenoid m_manipulatorSolenoid { frc::PneumaticsModuleType::CTREPCM, 0, 1 };
 
 	// Encoders
 	frc::Encoder m_leftEncoder;
