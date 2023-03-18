@@ -111,6 +111,7 @@ private:
 
 	frc::Spark m_manipulator;
 	frc::Spark m_manipulatorHand;
+	frc::DigitalInput m_manipulatorLimit;
 
 	// Pneumatics
 	frc::DoubleSolenoid m_manipulatorSolenoid { frc::PneumaticsModuleType::CTREPCM, 0, 1 };

@@ -9,6 +9,7 @@ DriveSubsystem::DriveSubsystem()
 	, m_rearRight { kRightMotorPorts[1] }
 	, m_manipulator { kManiplulatorPort }
 	, m_manipulatorHand { kManiplulatorHandPort }
+	, m_manipulatorLimit { kManiplulatorLimitPort }
 	, m_leftEncoder { kLeftEncoderPorts[0], kLeftEncoderPorts[1], frc::Encoder::EncodingType::k2X }
 	, m_rightEncoder { kRightEncoderPorts[0], kRightEncoderPorts[1], frc::Encoder::EncodingType::k2X }
 	, m_imu {} {
