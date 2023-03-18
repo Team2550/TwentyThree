@@ -46,7 +46,14 @@ units::angle::degree_t DriveSubsystem::GetCurrentAngle() { return m_imu.GetAngle
 
 void DriveSubsystem::SetOutputScale(double scale) { m_drive.SetMaxOutput(scale); }
 
-void DriveSubsystem::MoveArm(double value) { m_manipulator.Set(value); }
+/// Moves the arm. Refuses to move down if the limit switch is activated.
+void DriveSubsystem::MoveArm(double value) {
+	double modifiedValue = value;
+	if (value < 0 && m_manipulatorLimit.Get()) {
+		modifiedValue = 0;
+	}
+	m_manipulator.Set(modifiedValue);
+}
 
 void DriveSubsystem::ArmGrab() { m_manipulatorSolenoid.Set(frc::DoubleSolenoid::Value::kForward); }
 
