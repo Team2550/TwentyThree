@@ -5,7 +5,7 @@ Drive::Drive(DriveSubsystem* subsystem)
 	AddRequirements({ subsystem });
 }
 
-void Drive::Initialize() { m_speedMult = 0.75; }
+void Drive::Initialize() { m_speedMult = 0.5; }
 
 void Drive::Execute() {
 	if (m_driverController.GetRightBumper() == 1) {
