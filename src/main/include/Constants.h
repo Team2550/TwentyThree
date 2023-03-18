@@ -30,7 +30,7 @@ constexpr bool kLeftEncoderReversed = false;
 constexpr bool kRightEncoderReversed = true;
 
 constexpr int kManiplulatorPort = 4;
-constexpr int kManiplulatorHandPort = 5;
+constexpr int kManipulatorWinchPort = 5;
 /// @brief The DIO port for the manipulator's limit switch.
 constexpr int kManiplulatorLimitPort = 4;
 

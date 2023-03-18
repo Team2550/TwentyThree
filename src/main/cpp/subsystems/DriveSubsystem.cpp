@@ -8,7 +8,7 @@ DriveSubsystem::DriveSubsystem()
 	, m_frontRight { kRightMotorPorts[0] }
 	, m_rearRight { kRightMotorPorts[1] }
 	, m_manipulator { kManiplulatorPort }
-	, m_manipulatorHand { kManiplulatorHandPort }
+	, m_manipulatorWinch { kManipulatorWinchPort }
 	, m_manipulatorLimit { kManiplulatorLimitPort }
 	, m_leftEncoder { kLeftEncoderPorts[0], kLeftEncoderPorts[1], frc::Encoder::EncodingType::k2X }
 	, m_rightEncoder { kRightEncoderPorts[0], kRightEncoderPorts[1], frc::Encoder::EncodingType::k2X }
@@ -60,3 +60,13 @@ void DriveSubsystem::ArmGrab() { m_manipulatorSolenoid.Set(frc::DoubleSolenoid::
 void DriveSubsystem::ArmRelease() { m_manipulatorSolenoid.Set(frc::DoubleSolenoid::Value::kReverse); }
 
 void DriveSubsystem::ArmRest() { m_manipulatorSolenoid.Set(frc::DoubleSolenoid::Value::kOff); }
+
+void DriveSubsystem::DriveWinch(double speed) {
+	double modifiedSpeed = speed;
+	// Limit switch is inverted
+	if (speed < 0 && m_manipulatorLimit.Get()) {
+		modifiedSpeed = 0;
+	}
+
+	m_manipulatorWinch.Set(modifiedSpeed);
+}

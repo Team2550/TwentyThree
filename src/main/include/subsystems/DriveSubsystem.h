@@ -93,6 +93,12 @@ public:
 	units::angle::degree_t GetCurrentAngle();
 
 	/**
+	 * @brief Drives the manipulator's winch.
+	 * @param speed The speed to drive the winch (-1 to 1)
+	 */
+	void DriveWinch(double speed);
+
+	/**
 	 * Sets the output scalar.
 	 *
 	 * @param scale The value to scale the output by (0-1).
@@ -110,7 +116,7 @@ private:
 	frc::MotorControllerGroup m_right { m_frontRight, m_rearRight };
 
 	frc::Spark m_manipulator;
-	frc::Spark m_manipulatorHand;
+	frc::Spark m_manipulatorWinch;
 	frc::DigitalInput m_manipulatorLimit;
 
 	// Pneumatics
