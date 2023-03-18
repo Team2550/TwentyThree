@@ -49,7 +49,7 @@ void DriveSubsystem::SetOutputScale(double scale) { m_drive.SetMaxOutput(scale);
 /// Moves the arm. Refuses to move down if the limit switch is activated.
 void DriveSubsystem::MoveArm(double value) {
 	double modifiedValue = value;
-	if (value < 0 && m_manipulatorLimit.Get()) {
+	if (value > 0 && !(m_manipulatorLimit.Get())) {
 		modifiedValue = 0;
 	}
 	m_manipulator.Set(modifiedValue);

@@ -21,11 +21,11 @@ void Drive::Execute() {
 	frc::SmartDashboard::PutNumber("Turning speed:", -m_driverController.GetRightX());
 
 	if (m_armController.GetLeftTriggerAxis() < m_armController.GetRightTriggerAxis()) {
-		m_drive->MoveArm(m_armController.GetRightTriggerAxis());
+		m_drive->MoveArm(-m_armController.GetRightTriggerAxis());
 		frc::SmartDashboard::PutString("Arm status:", "MOVING UP");
 	} else {
 		if (m_armController.GetLeftTriggerAxis() > m_armController.GetRightTriggerAxis()) {
-			m_drive->MoveArm((-m_armController.GetLeftTriggerAxis()) * 0.5);
+			m_drive->MoveArm(m_armController.GetLeftTriggerAxis());
 			frc::SmartDashboard::PutString("Arm status:", "MOVING DOWN");
 		};
 	}
