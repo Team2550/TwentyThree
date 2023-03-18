@@ -61,12 +61,4 @@ void DriveSubsystem::ArmRelease() { m_manipulatorSolenoid.Set(frc::DoubleSolenoi
 
 void DriveSubsystem::ArmRest() { m_manipulatorSolenoid.Set(frc::DoubleSolenoid::Value::kOff); }
 
-void DriveSubsystem::DriveWinch(double speed) {
-	double modifiedSpeed = speed;
-	// Limit switch is inverted
-	if (speed < 0 && m_manipulatorLimit.Get()) {
-		modifiedSpeed = 0;
-	}
-
-	m_manipulatorWinch.Set(modifiedSpeed);
-}
+void DriveSubsystem::DriveWinch(double speed) { m_manipulatorWinch.Set(speed); }

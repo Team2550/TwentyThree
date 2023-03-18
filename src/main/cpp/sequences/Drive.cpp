@@ -5,7 +5,7 @@ Drive::Drive(DriveSubsystem* subsystem)
 	AddRequirements({ subsystem });
 }
 
-void Drive::Initialize() { m_speedMult = 0.5; }
+void Drive::Initialize() { m_speedMult = 0.65; }
 
 void Drive::Execute() {
 	if (m_driverController.GetRightBumper() == 1) {
@@ -33,12 +33,10 @@ void Drive::Execute() {
 		m_drive->MoveArm(0.0);
 		frc::SmartDashboard::PutString("Arm status:", "NOT MOVING");
 	}
-
-	if (m_driverController.GetAButton() == 1 && m_driverController.GetBButton() == 1) {
-	} else if (m_driverController.GetAButton() == 1) {
-		m_drive->DriveWinch(-0.5);
-	} else if (m_driverController.GetBButton() == 1) {
-		m_drive->DriveWinch(0.5);
+	if (m_driverController.GetAButton() == 1) {
+		m_drive->DriveWinch(-0.25);
+	} else {
+		m_drive->DriveWinch(0);
 	}
 
 	if (m_armController.GetAButton() == 1 && m_armController.GetBButton() == 0) {
