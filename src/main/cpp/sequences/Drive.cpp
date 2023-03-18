@@ -34,6 +34,13 @@ void Drive::Execute() {
 		frc::SmartDashboard::PutString("Arm status:", "NOT MOVING");
 	}
 
+	if (m_driverController.GetAButton() == 1 && m_driverController.GetBButton() == 1) {
+	} else if (m_driverController.GetAButton() == 1) {
+		m_drive->DriveWinch(-0.5);
+	} else if (m_driverController.GetBButton() == 1) {
+		m_drive->DriveWinch(0.5);
+	}
+
 	if (m_armController.GetAButton() == 1 && m_armController.GetBButton() == 0) {
 		m_drive->ArmRelease();
 	}
