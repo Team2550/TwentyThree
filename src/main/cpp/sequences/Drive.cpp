@@ -33,8 +33,11 @@ void Drive::Execute() {
 		m_drive->MoveArm(0.0);
 		frc::SmartDashboard::PutString("Arm status:", "NOT MOVING");
 	}
-	if (m_driverController.GetAButton() == 1) {
+
+	if (m_driverController.GetBButton() == 1) {
 		m_drive->DriveWinch(-0.25);
+	} else if (m_driverController.GetAButton() == 1) {
+		m_drive->DriveWinch(-0.5);
 	} else {
 		m_drive->DriveWinch(0);
 	}
