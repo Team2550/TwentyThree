@@ -7,7 +7,11 @@ DriveForwardTimed::DriveForwardTimed(double speed, units::second_t time, DriveSu
 	m_desiredMs = int(units::millisecond_t(time).value());
 }
 
-void DriveForwardTimed::Initialize() { }
+void DriveForwardTimed::Initialize() {
+	m_drive->ResetEncoders();
+	m_drive->SetYawAxis(frc::ADIS16470_IMU::kX);
+	heading = m_drive->GetCurrentAngle().value();
+}
 
 void DriveForwardTimed::Execute() {
 	m_drive->TankDrive(m_speed, m_speed);
