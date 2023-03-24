@@ -42,12 +42,13 @@ void Drive::Execute() {
 	// Winch when button
 	if (m_driverController.GetAButton() == 1) {
 		m_drive->DriveWinch(-0.5);
-	} else if (m_driverController.GetBButton() == 1) {
+	} else if (m_driverController.GetBButton() == 1 || m_armController.GetXButton() == 1) {
 		m_drive->DriveWinch(-1.0);
 	}
 
 	// Clear winch if no input & arm is not moving down.
-	if (m_driverController.GetAButton() == 0 && m_driverController.GetBButton() == 0
+	if ((m_driverController.GetAButton() == 0 && m_driverController.GetBButton() == 0
+			&& m_armController.GetXButton() == 0)
 		&& (m_armController.GetLeftTriggerAxis() < m_armController.GetRightTriggerAxis())) {
 		m_drive->DriveWinch(0);
 	}
