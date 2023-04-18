@@ -29,17 +29,6 @@ constexpr int kRightEncoderPorts[] = { 2, 3 };
 constexpr bool kLeftEncoderReversed = false;
 constexpr bool kRightEncoderReversed = true;
 
-constexpr int kManiplulatorPort = 4;
-constexpr int kManipulatorWinchPort = 5;
-/// @brief The DIO port for the manipulator's limit switch.
-constexpr int kManiplulatorLimitPort = 4;
-
-constexpr int kEncoderCPR = 1024;
-constexpr double kWheelDiameterInches = 6;
-constexpr double kEncoderDistancePerPulse =
-	// TODO: Fix this
-	// Assumes the encoders are directly mounted on the wheel shafts (they aren't, we need to fix this)
-	(kWheelDiameterInches * std::numbers::pi) / static_cast<double>(kEncoderCPR);
 } // namespace DriveConstants
 
 namespace AutoConstants {
