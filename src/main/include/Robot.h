@@ -33,6 +33,10 @@ public:
 	void TestExit() override;
 
 private:
+	frc::SendableChooser<std::string> m_chooser;
+	const std::string kDefaultAuto = "Default";
+	const std::string kNoAuto = "No Auto";
+	std::string m_autoSelected;
 	std::optional<frc2::CommandPtr> m_autonomousCommand;
 	std::optional<frc2::CommandPtr> m_testCommand;
 

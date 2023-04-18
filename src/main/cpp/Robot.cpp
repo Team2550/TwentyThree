@@ -7,6 +7,9 @@
 void Robot::RobotInit() {
 	frc::CameraServer::StartAutomaticCapture();
 	frc::CameraServer::StartAutomaticCapture();
+	m_chooser.SetDefaultOption(kDefaultAuto, kDefaultAuto);
+	m_chooser.AddOption(kNoAuto, kNoAuto);
+	frc::SmartDashboard::PutData("Autos", &m_chooser);
 }
 
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
@@ -18,13 +21,15 @@ void Robot::DisabledPeriodic() { }
 void Robot::DisabledExit() { }
 
 void Robot::AutonomousInit() {
-	if (m_testCommand) {
-		m_testCommand->Cancel();
-	}
+	m_autoSelected = m_chooser.GetSelected();
+	fmt::print("Auto Selected: {}\n", m_autoSelected);
+	frc::SmartDashboard::PutString("Auto Selected:", m_autoSelected);
 	m_autonomousCommand = m_container.GetAutonomousCommand();
-
-	if (m_autonomousCommand) {
-		m_autonomousCommand->Schedule();
+	if (m_autoSelected == kDefaultAuto) {
+		if (m_autonomousCommand) {
+			m_autonomousCommand->Schedule();
+		}
+	} else {
 	}
 }
 

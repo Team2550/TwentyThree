@@ -5,7 +5,7 @@ Drive::Drive(DriveSubsystem* subsystem)
 	AddRequirements({ subsystem });
 }
 
-void Drive::Initialize() { m_speedMult = 0.65; }
+void Drive::Initialize() { m_speedMult = 0.70; }
 
 void Drive::Execute() {
 	// Smartdashboard outputs for controls
@@ -15,11 +15,11 @@ void Drive::Execute() {
 	// Movement + Turbo toggle
 	if (m_driverController.GetRightBumper() == 1) {
 		frc::SmartDashboard::PutString("Turbo status:", "✅");
-		m_drive->ArcadeDrive(((m_driverController.GetLeftY())), ((-m_driverController.GetRightX())));
+		m_drive->ArcadeDrive(((m_driverController.GetLeftY())), ((m_driverController.GetRightX())));
 	} else {
 		frc::SmartDashboard::PutString("Turbo status:", "❌");
 		m_drive->ArcadeDrive(
-			((m_driverController.GetLeftY()) * m_speedMult), ((-m_driverController.GetRightX()) * m_speedMult));
+			((m_driverController.GetLeftY()) * m_speedMult), ((m_driverController.GetRightX()) * m_speedMult));
 	}
 
 	// Arm movement
@@ -40,9 +40,9 @@ void Drive::Execute() {
 	}
 
 	// Winch when button
-	if (m_driverController.GetAButton() == 1) {
+	if (m_driverController.GetAButton() == 1 || m_armController.GetXButton() == 1) {
 		m_drive->DriveWinch(-0.5);
-	} else if (m_driverController.GetBButton() == 1 || m_armController.GetXButton() == 1) {
+	} else if (m_driverController.GetBButton() == 1) {
 		m_drive->DriveWinch(-1.0);
 	}
 
