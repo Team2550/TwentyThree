@@ -22,11 +22,11 @@ public:
 	/***
 	 * @brief Drives the robot using Polar controls.
 	 *
-	 * @param speed The speed to drive the robot.
-	 * @param angle The thing.
+	 * @param speedV The speed to move vertially.
+	 * @param speedH The speed to move horizontally.
 	 * @param rotation The rotation to steer the robot to.
 	 */
-	void PolarDrive(double speed, frc::Rotation2d angle, double rotation);
+	void MecanumDrive(double speedV, double speedH, double rotation);
 
 private:
 	// Motor Controllers
