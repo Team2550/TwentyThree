@@ -16,12 +16,19 @@ void Drive::Execute() {
 	// Movement + Turbo toggle
 	if (m_driverController.GetRightBumper() == 1) {
 		frc::SmartDashboard::PutString("Turbo status:", "✅");
-		m_drive->MecanumDrive(((m_driverController.GetLeftY())), ((m_driverController.GetLeftX())), ((m_driverController.GetRightX())));
+		m_drive->MecanumDrive(
+			((m_driverController.GetLeftY())), ((m_driverController.GetLeftX())), ((m_driverController.GetRightX())));
 	} else {
 		frc::SmartDashboard::PutString("Turbo status:", "❌");
-		m_drive->MecanumDrive(((m_driverController.GetLeftY()) * m_speedMult), ((m_driverController.GetLeftX()) * m_speedMult),
-			((m_driverController.GetRightX()) * m_speedMult));
+		m_drive->MecanumDrive(((m_driverController.GetLeftY()) * m_speedMult),
+			((m_driverController.GetLeftX()) * m_speedMult), ((m_driverController.GetRightX()) * m_speedMult));
 	}
+
+	// Tank-esque movement, No turbo
+	/*
+	m_drive->MecanumTankDrive(m_driverController.GetRightY(), m_driverController.GetRightX(),
+		m_driverController.GetLeftY(), m_driverController.GetLeftX());
+	*/
 }
 
 void Drive::End(bool interrupted) { }

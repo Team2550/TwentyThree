@@ -20,13 +20,25 @@ public:
 	DriveSubsystem();
 
 	/***
-	 * @brief Drives the robot using Polar controls.
+	 * @brief Drives the robot.
 	 *
 	 * @param speedV The speed to move vertially.
 	 * @param speedH The speed to move horizontally.
 	 * @param rotation The rotation to steer the robot to.
 	 */
 	void MecanumDrive(double speedV, double speedH, double rotation);
+
+	/***
+	 * @brief Drives the robot using hybrid controls.
+	 *
+	 * @param leftSpeedV The speed to move the left motors vertially.
+	 * @param leftSpeedH The speed to move the left motors horizontally.
+	 *
+	 * @param rightSpeedV The speed to move the right motors vertially.
+	 * @param rightSpeedH The speed to move the right motors horizontally.
+	 *
+	 */
+	void MecanumTankDrive(double leftSpeedV, double leftSpeedH, double rightSpeedV, double rightSpeedH);
 
 private:
 	// Motor Controllers
