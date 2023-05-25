@@ -34,11 +34,6 @@ public:
 private:
 	DriveSubsystem* m_drive;
 
-	double m_speedV;
-	double m_speedH;
-	double m_speedMult = 0.5;
-	double m_rotation;
 	// The driver's controller.
 	frc2::CommandXboxController m_driverController { OIConstants::kDriverControllerPort };
-	frc2::CommandXboxController m_armController { OIConstants::kArmControllerPort };
 };
