@@ -16,7 +16,7 @@ class DriveSubsystem : public frc2::SubsystemBase {
 public:
 	DriveSubsystem();
 
-	/***
+	/**
  	 * @brief Drives mecanum wheels in arcade style
  	 *
  	 * Intended for use in 'arcade' style controls, where 1 stick controls movement
@@ -28,7 +28,7 @@ public:
  	 */
 	void MecanumDrive(double speedV, double speedH, double rotation);
 
-	/***
+	/**
  	 * @brief Drives mecanum wheels in tank style
  	 *
  	 * Intended for use in 'tank/west-coast/differential' style controls, 

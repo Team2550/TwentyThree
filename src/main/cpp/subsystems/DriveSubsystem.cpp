@@ -9,7 +9,7 @@ DriveSubsystem::DriveSubsystem()
 	, m_rearRight { kRightMotorPorts[1] } { }
 
 
-/***
+/**
  * @brief Drives mecanum wheels in arcade style
  *
  * Intended for use in 'arcade' style controls, where 1 stick controls movement
@@ -26,7 +26,7 @@ void DriveSubsystem::MecanumDrive(double speedV, double speedH, double rotation)
 	m_rearLeft.Set(rotation + (speedV + speedH));
 }
 
-/***
+/**
  * @brief Drives mecanum wheels in tank style
  *
  * Intended for use in 'tank/west-coast/differential' style controls, 
