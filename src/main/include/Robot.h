@@ -13,6 +13,7 @@
 #include <optional>
 
 #include "RobotContainer.h"
+#include "commands/WaitCommand.h"
 
 class Robot : public frc::TimedRobot {
 public:

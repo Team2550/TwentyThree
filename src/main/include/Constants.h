@@ -12,14 +12,8 @@
 #include <numbers>
 
 /**
- * The Constants header provides a convenient place for teams to hold robot-wide
- * numerical or bool constants.  This should not be used for any other purpose.
- *
- * It is generally a good idea to place constants into subsystem- or
- * command-specific namespaces within this header, which can then be used where
- * they are needed.
+ * @brief Contains motor port and encoder port values 
  */
-
 namespace DriveConstants {
 constexpr int kLeftMotorPorts[] = { 0, 1 };
 constexpr int kRightMotorPorts[] = { 2, 3 };
@@ -31,13 +25,17 @@ constexpr bool kRightEncoderReversed = true;
 
 } // namespace DriveConstants
 
+/**
+ * @brief Contains the length of time for auto
+ */
 namespace AutoConstants {
 constexpr auto kAutoTimeoutSeconds = 12_s;
 constexpr auto kAutoShootTimeSeconds = 7_s;
 } // namespace AutoConstants
 
-/// @brief These are constants for handling driver input.
+/**
+ * @brief Contains the ports used for controlers
+ */
 namespace OIConstants {
 constexpr int kDriverControllerPort = 0;
-constexpr int kArmControllerPort = 1;
 } // namespace OIConstants
