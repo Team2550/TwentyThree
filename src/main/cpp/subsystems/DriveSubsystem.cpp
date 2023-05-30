@@ -39,6 +39,11 @@ void DriveSubsystem::MecanumTankDrive(double leftSpeedV, double leftSpeedH, doub
 	m_rearLeft.Set(leftSpeedV - leftSpeedH);
 }
 
+void DriveSubsystem::SwerveDrive(units::meters_per_second_t speedV, units::meters_per_second_t speedH, units::radians_per_second_t, bool relative) {
+	frc::ChassisSpeeds speeds{speedV, speedH, rotation};
+	//REST OF CODE HERE 
+}
+
 /*
  * Encoder functions
  */

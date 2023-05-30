@@ -10,6 +10,17 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandPtr.h>
 #include <frc2/command/SubsystemBase.h>
+#include <frc/geometry/Pose2d.h>
+#include <frc/geometry/Rotation2d.h>
+#include <frc/geometry/Translation2d.h>
+#include <frc/kinematics/SwerveDriveKinematics.h>
+#include <frc/kinematics/SwerveDriveOdometry.h>
+#include <frc/kinematics/SwerveModulePosition.h>
+#include <frc/kinematics/SwerveModuleState.h>
+#include <units/angle.h>
+#include <units/angular_velocity.h>
+#include <units/length.h>
+#include <units/velocity.h>
 
 #include "Constants.h"
 
@@ -67,6 +78,21 @@ public:
 	 *
  	 */
 	void MecanumTankDrive(double leftSpeedV, double leftSpeedH, double rightSpeedV, double rightSpeedH);
+
+	/**
+	 * @todo The code is entirely unfinished.
+	 * @brief Drives a swerve robot with 'arcade' controls.
+	 *
+	 * Can **only** be used on a **swerve drivebase**
+	 * 1 stick controls the movement, the other rotation 
+	 *
+	 * @param[in] speedV The speed in which the robot moves forwards/backwards.
+	 * @param[in] speedH The speed in which the robot moves left/right.
+	 * @param[in] rotation The speed in which the direction the robot is facing is changed.
+	 * @param[in] relative Are speedV and speedH realtive to the field or robot direction.
+	 *
+	 */
+	void SwerveDrive(units::meters_per_second_t speedV, units::meters_per_second_t speedH, units::radians_per_second_t rotation, bool realtive)
 
 	/**
 	 * @brief Resets the drive encoders to read zero.
