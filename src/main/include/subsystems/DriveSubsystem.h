@@ -24,6 +24,8 @@
 
 #include "Constants.h"
 
+#include <cmath>
+
 class DriveSubsystem : public frc2::SubsystemBase {
 public:
 	DriveSubsystem();
@@ -80,6 +82,18 @@ public:
 	void MecanumTankDrive(double leftSpeedV, double leftSpeedH, double rightSpeedV, double rightSpeedH);
 
 	/**
+	 * @brief Creates a new odometry object
+	 * 
+	 * Uses imuAngle and pose to create an object for the robot to know it's
+	 * rotation relative to the field
+	 * 
+	 * @param[in] imuAngle The starting angle of the imu
+	 * @param[in] pose The starting pose of the robot
+	 * 
+	*/
+	void initializeSwerveOdometry(frc::Rotation2d imuAngle, frc::Pose2d pose);
+
+	/**
 	 * @brief Drives a swerve robot with 'arcade' controls.
 	 *
 	 * Can **only** be used on a **swerve drivebase**
@@ -88,12 +102,12 @@ public:
 	 * @param[in] speedV The speed in which the robot moves forwards/backwards.
 	 * @param[in] speedH The speed in which the robot moves left/right.
 	 * @param[in] rotation The speed in which the direction the robot is facing is changed.
-	 * @param[in] relative Are speedV and speedH realtive to the field or robot direction.
+	 * @param[in] imuAngle The angle from the IMU, used to determine the robot's direction
 	 *
 	 * @todo The code is entirely unfinished.
 	 *
 	 */
-	void SwerveDrive(units::meters_per_second_t speedV, units::meters_per_second_t speedH, units::radians_per_second_t rotation, bool realtive);
+	void SwerveDrive(units::meters_per_second_t speedV, units::meters_per_second_t speedH, units::radians_per_second_t rotation, units::angle::degree_t imuAngle);
 
 	/**
 	 * @brief Resets the drive encoders to read zero.

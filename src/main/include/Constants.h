@@ -34,8 +34,9 @@ constexpr auto kAutoShootTimeSeconds = 7_s;
 } // namespace AutoConstants
 
 /**
- * @brief Contains the ports used for controlers
+ * @brief Contains the ports used for controlers and deadzone
  */
 namespace OIConstants {
 constexpr int kDriverControllerPort = 0;
+constexpr double kDeadzone = 0.2;
 } // namespace OIConstants

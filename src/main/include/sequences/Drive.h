@@ -18,7 +18,7 @@
 
 class Drive : public frc2::CommandHelper<frc2::CommandBase, Drive> {
 public:
-	/***
+	/**
 	 * @brief Drive and controls
 	 */
 	explicit Drive(DriveSubsystem* subsystem);

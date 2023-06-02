@@ -19,7 +19,7 @@ public:
      *
      * Motor saftey **DOES NOT** like this command
 	 *
-	 * @param[in] time The amount of time that will be waited.
+	 * @param[in] time The amount of time that will be waited in seconds.
      *
 	 */
 	explicit WaitCommand(units::second_t time);
