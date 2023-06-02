@@ -16,6 +16,11 @@ DriveSubsystem::DriveSubsystem()
 
 	// Set the default yaw axis of the accelerometer to Y
 	this->SetYawAxis(frc::ADIS16470_IMU::IMUAxis::kY);
+	
+	frc::Translation2d m_frontLeftLocation{0.381_m, 0.381_m};
+	frc::Translation2d m_frontRightLocation{0.381_m, -0.381_m};
+	frc::Translation2d m_rearLeftLocation{-0.381_m, 0.381_m};
+	frc::Translation2d m_rearRightLocation{-0.381_m, -0.381_m};
 }
 
 /*
@@ -41,7 +46,7 @@ void DriveSubsystem::MecanumTankDrive(double leftSpeedV, double leftSpeedH, doub
 
 void DriveSubsystem::SwerveDrive(units::meters_per_second_t speedV, units::meters_per_second_t speedH, units::radians_per_second_t, bool relative) {
 	frc::ChassisSpeeds speeds{speedV, speedH, rotation};
-	//REST OF CODE HERE 
+	//REST OF CODE HERE
 }
 
 /*

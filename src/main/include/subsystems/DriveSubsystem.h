@@ -80,7 +80,6 @@ public:
 	void MecanumTankDrive(double leftSpeedV, double leftSpeedH, double rightSpeedV, double rightSpeedH);
 
 	/**
-	 * @todo The code is entirely unfinished.
 	 * @brief Drives a swerve robot with 'arcade' controls.
 	 *
 	 * Can **only** be used on a **swerve drivebase**
@@ -91,8 +90,10 @@ public:
 	 * @param[in] rotation The speed in which the direction the robot is facing is changed.
 	 * @param[in] relative Are speedV and speedH realtive to the field or robot direction.
 	 *
+	 * @todo The code is entirely unfinished.
+	 *
 	 */
-	void SwerveDrive(units::meters_per_second_t speedV, units::meters_per_second_t speedH, units::radians_per_second_t rotation, bool realtive)
+	void SwerveDrive(units::meters_per_second_t speedV, units::meters_per_second_t speedH, units::radians_per_second_t rotation, bool realtive);
 
 	/**
 	 * @brief Resets the drive encoders to read zero.
@@ -146,4 +147,5 @@ private:
 
 	// Drive Controller
 	frc::MecanumDrive m_drive { m_frontLeft, m_rearLeft, m_frontRight, m_rearRight };
+	frc::SwerveDriveKinematics<4> m_kinematics {m_frontLeftLocation, m_frontRightLocation, m_rearLeftLocation, m_rearRightLocation};
 };

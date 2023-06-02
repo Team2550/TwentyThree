@@ -8,12 +8,12 @@
 #include <units/angular_velocity.h>
 #include <units/time.h>
 #include <units/voltage.h>
-#include <units/meters.h>
+#include <units/length.h>
 
 #include <numbers>
 
 /**
- * @brief Contains motor port and encoder port values, along with motor locations for swerve
+ * @brief Contains motor port and encoder port values
  */
 namespace DriveConstants {
 constexpr int kLeftMotorPorts[] = { 0, 1 };
@@ -23,13 +23,6 @@ constexpr int kLeftEncoderPorts[] = { 0, 1 };
 constexpr int kRightEncoderPorts[] = { 2, 3 };
 constexpr bool kLeftEncoderReversed = false;
 constexpr bool kRightEncoderReversed = true;
-
-// Wont work 
-constexpr frc::Translation2d kFrontLeftLocation{0.381_m, 0.381_m};
-constexpr frc::Translation2d kFrontRightLocation{0.381_m, -0.381_m};
-constexpr frc::Translation2d kBackLeftLocation{-0.381_m, 0.381_m};
-constexpr frc::Translation2d kBackRightLocation{-0.381_m, -0.381_m};
-
 } // namespace DriveConstants
 
 /**
