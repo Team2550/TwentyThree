@@ -6,14 +6,14 @@
 
 #include <units/angle.h>
 #include <units/angular_velocity.h>
+#include <units/length.h>
 #include <units/time.h>
 #include <units/voltage.h>
-#include <units/length.h>
 
 #include <numbers>
 
 /**
- * @brief Contains motor port and encoder port values
+ * @brief Contains motor port, encoder port values, and motor locations
  */
 namespace DriveConstants {
 constexpr int kLeftMotorPorts[] = { 0, 1 };
@@ -23,6 +23,11 @@ constexpr int kLeftEncoderPorts[] = { 0, 1 };
 constexpr int kRightEncoderPorts[] = { 2, 3 };
 constexpr bool kLeftEncoderReversed = false;
 constexpr bool kRightEncoderReversed = true;
+
+constexpr units::meter_t kfrontLeftLocations[] = { 0.381_m, 0.381_m };
+constexpr units::meter_t kfrontRightLocations[] = { 0.381_m, -0.381_m };
+constexpr units::meter_t krearLeftLocations[] = { -0.381_m, 0.381_m };
+constexpr units::meter_t krearRightLocations[] = { -0.381_m, -0.381_m };
 } // namespace DriveConstants
 
 /**

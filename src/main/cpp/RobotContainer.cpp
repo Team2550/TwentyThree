@@ -7,7 +7,8 @@
 RobotContainer::RobotContainer() { ConfigureBindings(); }
 
 void RobotContainer::ConfigureBindings() {
-	m_drive.SetDefaultCommand(Drive(&m_drive).ToPtr());
+	m_differentialDrive.SetDefaultCommand(Drive(&m_differentialDrive).ToPtr());
+	m_mecanumDrive.SetDefaultCommand(Drive(&m_mecanumDrive).ToPtr());
 	ConfigureButtonBindings();
 }
 
