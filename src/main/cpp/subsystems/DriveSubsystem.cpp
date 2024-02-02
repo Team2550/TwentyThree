@@ -76,25 +76,6 @@ void DriveSubsystem::MecanumTankDrive(double leftSpeedV, double leftSpeedH, doub
 	m_rearLeft.Set(leftSpeedV - leftSpeedH);
 }
 
-void DriveSubsystem::initializeSwerveOdometry(frc::Rotation2d imuAngle, frc::Pose2d pose) {
-	delete odometry;
-	odometry = new frc::SwerveDriveOdometry<4>(m_kinematics, imuAngle, pose);
-}
-
-void DriveSubsystem::SwerveDrive(units::meters_per_second_t speedV, units::meters_per_second_t speedH,
-	units::radians_per_second_t rotation, units::angle::degree_t imuAngle) {
-	// Deadzone
-	if (abs(speedV.value()) < 0.5)
-		speedV = units::meters_per_second_t { 0 };
-	if (abs(speedH.value()) < 0.5)
-		speedH = units::meters_per_second_t { 0 };
-
-	speeds = frc::ChassisSpeeds::FromFieldRelativeSpeeds(speedH, speedV, rotation, frc::Rotation2d(imuAngle));
-	auto [fl, fr, bl, br] = m_kinematics.ToSwerveModuleStates(speeds);
-
-	// REST OF CODE HERE
-}
-
 /*
  * Encoder functions
  */
